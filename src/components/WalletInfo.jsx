@@ -24,7 +24,7 @@ const WalletInfo = ({ account, balance, network }) => {
         alt="Random Avatar"
         className="mb-4 w-24 h-24 rounded-full border-4 border-gray-700"
       />
-      <p className="text-2xl font-semibold mb-2">
+      <p title={`${account}`} className="text-2xl font-semibold mb-2">
         <strong>Account:</strong>{" "}
         {account
           ? `0x${account.slice(2, 7)}...${account.slice(-4)}`
