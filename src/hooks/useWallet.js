@@ -47,9 +47,9 @@ export const useWallet = () => {
       setAccount(account);
       await fetchBalance(account, false);
       const chainId = await window.ethereum.request({ method: "eth_chainId" });
-      console.log(chainId);
-      // setNetwork(chainNames[String(chainId).split("x")[1]]); //was trying to display the name instead of the chain id
-      setNetwork(chainId);
+      console.log(parseInt(chainId, 16));
+      setNetwork(chainNames[parseInt(chainId, 16)]); //checked chainlist code and this was how it was encoded to hex
+      // setNetwork(chainId);
     } catch (error) {
       console.error("Connection failed:", error);
     }
@@ -105,7 +105,7 @@ export const useWallet = () => {
   };
 
   const handleChainChanged = async (chainId) => {
-    setNetwork(chainId);
+    setNetwork(chainNames[parseInt(chainId, 16)]);
     console.log(chainId);
     if (account) {
       console.log("Running");
